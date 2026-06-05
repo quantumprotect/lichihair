@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Lichi Hair">
+<meta name="theme-color" content="#C2185B">
+<title>Lichi Hair Empire — Luxury Hair Brand</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --rose: #E91E8C;
+  --deep-rose: #C2185B;
+  --hot-pink: #FF4081;
+  --blush: #FCE4EC;
+  --soft-blush: #FFF0F5;
+  --gold: #D4AF37;
+  --warm-gold: #F5C518;
+  --cream: #FFFDF8;
+  --champagne: #F7E7CE;
+  --deep-plum: #4A0033;
+  --soft-plum: #8B1A5C;
+  --lavender: #E8D5F0;
+  --teal-accent: #00BCD4;
+  --coral: #FF6B6B;
+  --white: #FFFFFF;
+  --text-dark: #2C0020;
+  --text-mid: #5C2D4A;
+  --text-light: #9E6B82;
+  --border: rgba(194, 24, 91, 0.15);
+  --shadow: 0 8px 32px rgba(194, 24, 91, 0.12);
+  --shadow-hover: 0 16px 48px rgba(194, 24, 91, 0.22);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+.page { display: none; }
+.page.active { display: block; }
+
+/* ===================== NAVBAR ===================== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  height: 70px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700; font-style: italic;
+  background: linear-gradient(135deg, var(--deep-rose), var(--rose), var(--hot-pink));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  text-decoration: none; color: var(--text-mid);
+  font-size: 14px; font-weight: 500; letter-spacing: 0.5px;
+  transition: color 0.2s;
+  text-transform: uppercase;
+}
+.nav-links a:hover { color: var(--rose); }
+.nav-btn {
+  background: linear-gradient(135deg, var(--deep-rose), var(--hot-pink));
+  color: white; border: none; padding: 10px 24px;
+  border-radius: 50px; font-size: 13px; font-weight: 600;
+  cursor: pointer; text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.5px;
+}
+.nav-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(233,30,140,0.4); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger span { width: 24px; height: 2px; background: var(--text-mid); border-radius: 2px; transition: 0.3s; }
+.mobile-menu {
+  display: none; position: fixed; top: 70px; left: 0; right: 0;
+  background: white; z-index: 999;
+  padding: 20px 24px; flex-direction: column; gap: 16px;
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.mobile-menu a {
+  text-decoration: none; color: var(--text-mid);
+  font-size: 15px; font-weight: 500; padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ===================== HERO ===================== */
+.hero {
+  min-height: 100vh; padding-top: 70px;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(233,30,140,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 10% 80%, rgba(255,64,129,0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(212,175,55,0.06) 0%, transparent 70%),
+    var(--cream);
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -50px; right: -100px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(233,30,140,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: -100px; left: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(255,64,129,0.07) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero-inner {
+  max-width: 1200px; margin: 0 auto; padding: 80px 24px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+  align-items: center; position: relative; z-index: 1;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, var(--blush), var(--champagne));
+  border: 1px solid rgba(233,30,140,0.2);
+  padding: 8px 18px; border-radius: 50px;
+  font-size: 12px; font-weight: 600; color: var(--deep-rose);
+  letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 24px;
+}
+.hero-badge::before { content: '✦'; font-size: 10px; color: var(--gold); }
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 5vw, 64px);
+  font-weight: 700; line-height: 1.1;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+}
+.hero h1 em {
+  font-style: italic;
+  background: linear-gradient(135deg, var(--deep-rose), var(--rose), var(--hot-pink));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; color: var(--text-mid);
+  line-height: 1.6; margin-bottom: 36px;
+}
+.hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary {
+  background: linear-gradient(135deg, var(--deep-rose) 0%, var(--hot-pink) 100%);
+  color: white; border: none; padding: 16px 36px;
+  border-radius: 50px; font-size: 15px; font-weight: 600;
+  cursor: pointer; text-decoration: none;
+  transition: transform 0.25s, box-shadow 0.25s;
+  display: inline-flex; align-items: center; gap: 10px;
+  letter-spacing: 0.3px;
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(233,30,140,0.45); }
+.btn-secondary {
+  background: transparent; border: 2px solid var(--deep-rose);
+  color: var(--deep-rose); padding: 14px 32px;
+  border-radius: 50px; font-size: 15px; font-weight: 600;
+  cursor: pointer; text-decoration: none;
+  transition: all 0.25s; display: inline-flex; align-items: center; gap: 10px;
+}
+.btn-secondary:hover { background: var(--blush); }
+.hero-visual {
+  position: relative; display: flex; align-items: center; justify-content: center;
+}
+.hero-ornament {
+  width: 420px; height: 520px; position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-circle-bg {
+  position: absolute;
+  width: 380px; height: 380px;
+  background: linear-gradient(135deg, var(--blush) 0%, var(--champagne) 50%, var(--lavender) 100%);
+  border-radius: 50%; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes float { 0%,100%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-50%,-52%) scale(1.02)} }
+.hero-crown {
+  position: relative; z-index: 2;
+  font-family: 'Playfair Display', serif;
+  text-align: center; padding: 40px;
+}
+.hero-crown .big-letter {
+  font-size: 140px; font-weight: 700; font-style: italic; line-height: 1;
+  background: linear-gradient(135deg, var(--deep-rose), var(--rose), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; opacity: 0.8;
+}
+.hero-crown .sub-text {
+  font-size: 13px; letter-spacing: 5px; color: var(--text-light);
+  text-transform: uppercase; font-weight: 500; margin-top: -10px;
+}
+.hero-stats {
+  display: flex; gap: 32px; margin-top: 40px;
+}
+.hero-stat { text-align: center; }
+.hero-stat .num {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px; font-weight: 700; color: var(--rose);
+}
+.hero-stat .label { font-size: 12px; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; }
+
+/* ===================== SECTIONS ===================== */
+section { padding: 80px 24px; }
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 44px); font-weight: 700;
+  text-align: center; margin-bottom: 12px; color: var(--text-dark);
+}
+.section-title em {
+  font-style: italic; color: var(--rose);
+}
+.section-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; color: var(--text-light);
+  text-align: center; margin-bottom: 56px;
+}
+.section-divider {
+  width: 60px; height: 3px;
+  background: linear-gradient(90deg, var(--deep-rose), var(--hot-pink));
+  margin: 16px auto 48px; border-radius: 2px;
+}
+
+/* ===================== BESTSELLERS ===================== */
+#bestsellers {
+  background:
+    radial-gradient(ellipse at 90% 10%, rgba(233,30,140,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 10% 90%, rgba(212,175,55,0.05) 0%, transparent 50%),
+    var(--soft-blush);
+}
+.hair-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 28px; max-width: 1200px; margin: 0 auto;
+}
+.hair-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+.hair-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
+.hair-card-img {
+  width: 100%; height: 240px; object-fit: cover;
+  display: block;
+}
+.hair-card-img-placeholder {
+  width: 100%; height: 240px;
+  background: linear-gradient(135deg, var(--blush) 0%, var(--champagne) 50%, var(--lavender) 100%);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 12px;
+}
+.hair-card-img-placeholder svg { opacity: 0.4; }
+.hair-card-img-placeholder span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px; color: var(--text-light); font-style: italic;
+}
+.hair-badge {
+  position: absolute; top: 16px; left: 16px;
+  background: linear-gradient(135deg, var(--deep-rose), var(--hot-pink));
+  color: white; font-size: 11px; font-weight: 700;
+  padding: 4px 12px; border-radius: 50px;
+  letter-spacing: 0.5px; text-transform: uppercase;
+}
+.hair-card-body { padding: 20px; }
+.hair-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 600; margin-bottom: 6px;
+  color: var(--text-dark);
+}
+.hair-desc {
+  font-size: 13px; color: var(--text-light);
+  line-height: 1.5; margin-bottom: 16px;
+}
+.hair-price-row { display: flex; align-items: center; justify-content: space-between; }
+.hair-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700;
+  color: var(--rose);
+}
+.hair-price.negotiable {
+  font-size: 14px; font-weight: 500;
+  color: var(--gold); font-family: 'DM Sans', sans-serif;
+  font-style: italic;
+}
+.hair-price.hidden-price { display: none; }
+.wa-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #25D366; color: white;
+  border: none; padding: 9px 18px;
+  border-radius: 50px; font-size: 13px; font-weight: 600;
+  cursor: pointer; text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.wa-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,211,102,0.4); }
+.wa-btn svg { width: 16px; height: 16px; }
+.empty-grid {
+  grid-column: 1 / -1; text-align: center; padding: 60px 20px;
+}
+.empty-grid .empty-icon { font-size: 48px; margin-bottom: 16px; }
+.empty-grid p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; color: var(--text-light); font-style: italic;
+}
+
+/* ===================== WHY US ===================== */
+.why-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px; max-width: 1100px; margin: 0 auto;
+}
+.why-card {
+  text-align: center; padding: 36px 24px;
+  background: white; border-radius: 20px;
+  border: 1px solid var(--border);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.why-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+.why-icon {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--blush), var(--champagne));
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px; font-size: 28px;
+}
+.why-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 600; margin-bottom: 10px;
+  color: var(--text-dark);
+}
+.why-card p { font-size: 14px; color: var(--text-light); line-height: 1.6; }
+
+/* ===================== MARQUEE ===================== */
+.marquee-section {
+  background: linear-gradient(135deg, var(--deep-rose), var(--rose), var(--hot-pink));
+  padding: 20px 0; overflow: hidden;
+}
+.marquee-track {
+  display: flex; gap: 0;
+  animation: marquee 20s linear infinite;
+  width: max-content;
+}
+.marquee-item {
+  display: flex; align-items: center; gap: 20px;
+  padding: 0 32px;
+  font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.9);
+  letter-spacing: 2px; text-transform: uppercase; white-space: nowrap;
+}
+.marquee-item::after { content: '✦'; font-size: 10px; color: rgba(255,255,255,0.6); }
+@keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+/* ===================== TESTIMONIALS ===================== */
+#testimonials { background: var(--cream); }
+.testi-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px; max-width: 1100px; margin: 0 auto;
+}
+.testi-card {
+  background: white; border-radius: 20px;
+  padding: 28px; border: 1px solid var(--border);
+  position: relative;
+}
+.testi-card::before {
+  content: '"'; font-family: 'Playfair Display', serif;
+  font-size: 80px; color: var(--blush);
+  position: absolute; top: 10px; left: 20px;
+  line-height: 1; z-index: 0;
+}
+.testi-body {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px; line-height: 1.6; color: var(--text-mid);
+  font-style: italic; position: relative; z-index: 1;
+  margin-bottom: 20px; padding-top: 24px;
+}
+.testi-author { display: flex; align-items: center; gap: 12px; }
+.testi-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--deep-rose), var(--hot-pink));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700; color: white;
+}
+.testi-name { font-size: 14px; font-weight: 600; color: var(--text-dark); }
+.testi-stars { color: var(--gold); font-size: 13px; }
+
+/* ===================== CONTACT/FOOTER ===================== */
+#contact {
+  background: linear-gradient(135deg, var(--deep-plum) 0%, #3A0028 100%);
+  color: white; text-align: center;
+}
+#contact .section-title { color: white; }
+#contact .section-sub { color: rgba(255,255,255,0.6); }
+.contact-wa {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: #25D366; color: white; border: none;
+  padding: 18px 42px; border-radius: 50px;
+  font-size: 16px; font-weight: 700; cursor: pointer;
+  text-decoration: none; margin-bottom: 40px;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.contact-wa:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(37,211,102,0.5); }
+.contact-info { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 20px; }
+.contact-info-item { display: flex; flex-direction: column; gap: 4px; }
+.contact-info-item .label { font-size: 11px; letter-spacing: 2px; color: rgba(255,255,255,0.5); text-transform: uppercase; }
+.contact-info-item .val { font-size: 15px; color: rgba(255,255,255,0.9); }
+footer {
+  background: rgba(0,0,0,0.3); padding: 20px 24px; text-align: center;
+}
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-style: italic;
+  background: linear-gradient(135deg, var(--rose), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.4); }
+.footer-admin-link {
+  font-size: 12px; color: rgba(255,255,255,0.3);
+  cursor: pointer; text-decoration: underline;
+  background: none; border: none; font-family: 'DM Sans', sans-serif;
+}
+.footer-admin-link:hover { color: rgba(255,255,255,0.6); }
+
+/* ===================== ADMIN LOGIN ===================== */
+.admin-login-wrap {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  background:
+    radial-gradient(ellipse at 30% 30%, rgba(233,30,140,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(212,175,55,0.1) 0%, transparent 50%),
+    var(--cream);
+  padding: 24px;
+}
+.login-card {
+  background: white; border-radius: 28px;
+  padding: 48px 40px; max-width: 400px; width: 100%;
+  border: 1px solid var(--border); box-shadow: var(--shadow);
+  text-align: center;
+}
+.login-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px; font-weight: 700; font-style: italic;
+  background: linear-gradient(135deg, var(--deep-rose), var(--rose), var(--hot-pink));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; margin-bottom: 6px;
+}
+.login-sub {
+  font-size: 13px; color: var(--text-light);
+  letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 36px;
+}
+.form-group { margin-bottom: 20px; text-align: left; }
+.form-label { font-size: 12px; font-weight: 600; color: var(--text-mid); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; display: block; }
+.form-input {
+  width: 100%; padding: 14px 18px; border-radius: 12px;
+  border: 1.5px solid var(--border); font-size: 15px;
+  font-family: 'DM Sans', sans-serif;
+  background: var(--soft-blush); color: var(--text-dark);
+  outline: none; transition: border-color 0.2s;
+}
+.form-input:focus { border-color: var(--rose); background: white; }
+.login-btn {
+  width: 100%; padding: 16px;
+  background: linear-gradient(135deg, var(--deep-rose), var(--hot-pink));
+  color: white; border: none; border-radius: 12px;
+  font-size: 16px; font-weight: 700; cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: transform 0.2s, box-shadow 0.2s; margin-top: 8px;
+}
+.login-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(233,30,140,0.4); }
+.login-err { color: #e53935; font-size: 13px; margin-top: 12px; display: none; }
+
+/* ===================== ADMIN PANEL ===================== */
+.admin-wrap { min-height: 100vh; background: #FFF5F9; }
+.admin-nav {
+  background: white; border-bottom: 1px solid var(--border);
+  padding: 0 24px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 100;
+}
+.admin-nav-left { display: flex; align-items: center; gap: 16px; }
+.admin-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-style: italic; font-weight: 700;
+  background: linear-gradient(135deg, var(--deep-rose), var(--rose));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.admin-badge {
+  background: var(--blush); color: var(--deep-rose);
+  font-size: 11px; font-weight: 700; padding: 3px 10px;
+  border-radius: 50px; letter-spacing: 1px; text-transform: uppercase;
+}
+.admin-logout {
+  background: none; border: 1px solid var(--border);
+  color: var(--text-mid); padding: 8px 18px;
+  border-radius: 8px; font-size: 13px; font-weight: 500;
+  cursor: pointer; font-family: 'DM Sans', sans-serif;
+  transition: all 0.2s;
+}
+.admin-logout:hover { background: var(--blush); color: var(--deep-rose); border-color: var(--rose); }
+.admin-content { max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
+.admin-header { margin-bottom: 40px; }
+.admin-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px; font-weight: 700; margin-bottom: 6px;
+  color: var(--text-dark);
+}
+.admin-header p { color: var(--text-light); font-size: 14px; }
+.admin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.admin-panel {
+  background: white; border-radius: 20px;
+  border: 1px solid var(--border); overflow: hidden;
+}
+.panel-header {
+  padding: 20px 24px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.panel-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 600; color: var(--text-dark);
+}
+.panel-body { padding: 24px; }
+.upload-area {
+  border: 2px dashed rgba(233,30,140,0.3);
+  border-radius: 16px; padding: 32px 20px; text-align: center;
+  cursor: pointer; transition: all 0.2s; background: var(--soft-blush);
+  position: relative; overflow: hidden;
+}
+.upload-area:hover { border-color: var(--rose); background: var(--blush); }
+.upload-area input[type="file"] {
+  position: absolute; inset: 0; opacity: 0; cursor: pointer;
+  width: 100%; height: 100%;
+}
+.upload-icon { font-size: 36px; margin-bottom: 8px; }
+.upload-text { font-size: 14px; color: var(--text-mid); line-height: 1.5; }
+.upload-preview {
+  width: 100%; height: 160px; object-fit: cover;
+  border-radius: 12px; margin-top: 16px; display: none;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-select {
+  width: 100%; padding: 12px 16px; border-radius: 10px;
+  border: 1.5px solid var(--border); font-size: 14px;
+  font-family: 'DM Sans', sans-serif; background: var(--soft-blush);
+  color: var(--text-dark); outline: none; transition: border-color 0.2s;
+}
+.form-select:focus { border-color: var(--rose); background: white; }
+.form-textarea {
+  width: 100%; padding: 12px 16px; border-radius: 10px;
+  border: 1.5px solid var(--border); font-size: 14px;
+  font-family: 'DM Sans', sans-serif; background: var(--soft-blush);
+  color: var(--text-dark); outline: none; resize: vertical;
+  min-height: 80px; transition: border-color 0.2s;
+}
+.form-textarea:focus { border-color: var(--rose); background: white; }
+.price-options { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.price-option {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 13px; color: var(--text-mid); cursor: pointer;
+}
+.price-option input { accent-color: var(--rose); }
+.price-fields { display: none; }
+.price-fields.show { display: block; }
+.price-currency-row { display: flex; gap: 12px; }
+.save-btn {
+  width: 100%; padding: 14px;
+  background: linear-gradient(135deg, var(--deep-rose), var(--hot-pink));
+  color: white; border: none; border-radius: 12px;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; margin-top: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.save-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(233,30,140,0.4); }
+.admin-hair-list { max-height: 600px; overflow-y: auto; }
+.admin-hair-item {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px; border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.admin-hair-item:hover { background: var(--soft-blush); }
+.admin-hair-item:last-child { border-bottom: none; }
+.admin-hair-thumb {
+  width: 60px; height: 60px; border-radius: 10px; object-fit: cover; flex-shrink: 0;
+}
+.admin-hair-thumb-placeholder {
+  width: 60px; height: 60px; border-radius: 10px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--blush), var(--champagne));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+}
+.admin-hair-info { flex: 1; min-width: 0; }
+.admin-hair-name { font-weight: 600; font-size: 14px; color: var(--text-dark); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.admin-hair-price { font-size: 12px; color: var(--rose); font-weight: 500; }
+.admin-hair-status {
+  font-size: 10px; padding: 3px 8px; border-radius: 50px;
+  background: var(--blush); color: var(--deep-rose);
+  font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.admin-actions { display: flex; gap: 8px; }
+.action-btn {
+  width: 32px; height: 32px; border-radius: 8px;
+  border: 1px solid var(--border); background: white;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  font-size: 14px; transition: all 0.2s;
+}
+.action-btn:hover { background: var(--blush); border-color: var(--rose); }
+.action-btn.delete:hover { background: #ffebee; border-color: #e53935; }
+.toggle-btn {
+  width: 36px; height: 20px; border-radius: 10px;
+  background: #ccc; border: none; cursor: pointer;
+  position: relative; transition: background 0.3s;
+}
+.toggle-btn.on { background: linear-gradient(90deg, var(--deep-rose), var(--hot-pink)); }
+.toggle-btn::after {
+  content: ''; position: absolute;
+  width: 14px; height: 14px; border-radius: 50%; background: white;
+  top: 3px; left: 3px; transition: left 0.3s;
+}
+.toggle-btn.on::after { left: 19px; }
+.empty-admin {
+  padding: 40px 20px; text-align: center;
+  color: var(--text-light); font-style: italic;
+  font-family: 'Cormorant Garamond', serif; font-size: 16px;
+}
+.success-toast {
+  position: fixed; top: 80px; right: 20px; z-index: 9999;
+  background: linear-gradient(135deg, var(--deep-rose), var(--hot-pink));
+  color: white; padding: 14px 24px; border-radius: 12px;
+  font-size: 14px; font-weight: 600;
+  box-shadow: 0 8px 24px rgba(233,30,140,0.4);
+  transform: translateX(120%); transition: transform 0.4s ease;
+}
+.success-toast.show { transform: translateX(0); }
+.edit-modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+  z-index: 2000; display: none; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.edit-modal-overlay.open { display: flex; }
+.edit-modal {
+  background: white; border-radius: 24px; padding: 32px;
+  max-width: 500px; width: 100%; max-height: 90vh; overflow-y: auto;
+}
+.edit-modal h2 {
+  font-family: 'Playfair Display', serif; font-size: 22px;
+  font-weight: 700; margin-bottom: 24px; color: var(--text-dark);
+}
+.modal-close {
+  float: right; background: none; border: none;
+  font-size: 22px; cursor: pointer; color: var(--text-light);
+  margin-top: -4px;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 768px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 32px; padding: 40px 20px; }
+  .hero-visual { order: -1; }
+  .hero-ornament { width: 280px; height: 280px; }
+  .hero-circle-bg { width: 240px; height: 240px; }
+  .hero-crown .big-letter { font-size: 90px; }
+  .hero-stats { gap: 20px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .admin-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .hair-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+  .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+  section { padding: 60px 16px; }
+}
+@media (max-width: 480px) {
+  .hair-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .hair-card-img, .hair-card-img-placeholder { height: 180px; }
+  .hair-card-body { padding: 14px; }
+  .hair-name { font-size: 15px; }
+  .hair-price { font-size: 18px; }
+  .wa-btn { padding: 8px 12px; font-size: 11px; }
+  .login-card { padding: 32px 24px; }
+  .admin-content { padding: 20px 16px; }
+}
+
+.scroll-appear {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.scroll-appear.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<div id="toast" class="success-toast"></div>
+
+<!-- ===== MAIN SITE ===== -->
+<div id="main-page" class="page active">
+
+  <nav>
+    <a class="nav-logo" onclick="scrollTo(0,0)" style="cursor:pointer">✦ Lichi Hair Empire</a>
+    <div class="nav-links">
+      <a href="#bestsellers">Shop</a>
+      <a href="#why-us">About</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="nav-btn" href="https://wa.me/2348000000000" target="_blank">Order on WhatsApp</a>
+    <div class="hamburger" onclick="toggleMenu()" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#bestsellers" onclick="closeMenu()">Shop</a>
+    <a href="#why-us" onclick="closeMenu()">About</a>
+    <a href="#testimonials" onclick="closeMenu()">Reviews</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+    <a href="https://wa.me/2348000000000" target="_blank" onclick="closeMenu()">Order on WhatsApp ↗</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">Luxury Hair Brand — Lagos, Nigeria</div>
+        <h1>Wear Your<br>Crown With<br><em>Confidence</em></h1>
+        <p class="hero-sub">Premium quality hair extensions & wigs, crafted for the fierce, fabulous, unstoppable queen in you.</p>
+        <div class="hero-cta">
+          <a class="btn-primary" href="#bestsellers">Shop Best Sellers ✦</a>
+          <a class="btn-secondary" href="https://wa.me/2348000000000" target="_blank">Chat With Us</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="num">500+</div><div class="label">Happy Queens</div></div>
+          <div class="hero-stat"><div class="num">100%</div><div class="label">Premium Quality</div></div>
+          <div class="hero-stat"><div class="num">24/7</div><div class="label">WhatsApp Support</div></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-ornament">
+          <div class="hero-circle-bg"></div>
+          <div class="hero-crown">
+            <div class="big-letter">L</div>
+            <div class="sub-text">Lichi Hair Empire</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-section">
+    <div class="marquee-track" id="marqueeTrack">
+      <div class="marquee-item">Premium Quality Hair</div>
+      <div class="marquee-item">Body Wave</div>
+      <div class="marquee-item">Deep Wave</div>
+      <div class="marquee-item">Straight Hair</div>
+      <div class="marquee-item">Kinky Curly</div>
+      <div class="marquee-item">Brazilian Bundles</div>
+      <div class="marquee-item">Closure Wigs</div>
+      <div class="marquee-item">Lichi Hair Empire</div>
+      <div class="marquee-item">Premium Quality Hair</div>
+      <div class="marquee-item">Body Wave</div>
+      <div class="marquee-item">Deep Wave</div>
+      <div class="marquee-item">Straight Hair</div>
+      <div class="marquee-item">Kinky Curly</div>
+      <div class="marquee-item">Brazilian Bundles</div>
+      <div class="marquee-item">Closure Wigs</div>
+      <div class="marquee-item">Lichi Hair Empire</div>
+    </div>
+  </div>
+
+  <!-- BESTSELLERS -->
+  <section id="bestsellers">
+    <div class="section-title">Our <em>Best Sellers</em></div>
+    <div class="section-divider"></div>
+    <p class="section-sub">Hand-picked premium styles our queens love most</p>
+    <div class="hair-grid" id="hairGrid">
+      <div class="empty-grid">
+        <div class="empty-icon">👑</div>
+        <p>Our curated collection is coming soon...<br>Check back or chat with us on WhatsApp!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why-us">
+    <div class="section-title">Why Choose <em>Lichi?</em></div>
+    <div class="section-divider"></div>
+    <p class="section-sub">We pour love, care & luxury into every strand</p>
+    <div class="why-grid">
+      <div class="why-card scroll-appear">
+        <div class="why-icon">💎</div>
+        <h3>100% Premium Quality</h3>
+        <p>Only the finest hair makes it to our collection. No compromises, ever.</p>
+      </div>
+      <div class="why-card scroll-appear">
+        <div class="why-icon">👑</div>
+        <h3>Queen-Approved Styles</h3>
+        <p>Every style is tested and loved by real queens just like you.</p>
+      </div>
+      <div class="why-card scroll-appear">
+        <div class="why-icon">🚀</div>
+        <h3>Fast Delivery</h3>
+        <p>Swift and safe delivery across Nigeria and beyond your doorstep.</p>
+      </div>
+      <div class="why-card scroll-appear">
+        <div class="why-icon">💬</div>
+        <h3>Personal Styling Help</h3>
+        <p>Not sure what to get? Our team guides you to your perfect match.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="section-title">What Our <em>Queens Say</em></div>
+    <div class="section-divider"></div>
+    <p class="section-sub">Real love from real customers</p>
+    <div class="testi-grid">
+      <div class="testi-card scroll-appear">
+        <div class="testi-body">The hair quality is beyond amazing! I've been wearing Lichi hair for 6 months and it still looks brand new. Absolutely in love!</div>
+        <div class="testi-author">
+          <div class="testi-avatar">A</div>
+          <div>
+            <div class="testi-name">Adaeze Okafor</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card scroll-appear">
+        <div class="testi-body">Customer service is top-notch! They helped me pick the perfect wig and I got so many compliments. Lichi Hair is a whole vibe.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">F</div>
+          <div>
+            <div class="testi-name">Fatima Bello</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card scroll-appear">
+        <div class="testi-body">Finally found a hair brand that actually delivers on their promises. The body wave bundle is everything! Will definitely be ordering again.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">C</div>
+          <div>
+            <div class="testi-name">Chidinma Eze</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-title">Shop With <em>Us Today</em></div>
+    <div class="section-divider"></div>
+    <p class="section-sub">Message us and we'll help you find your perfect hair!</p>
+    <a class="contact-wa" href="https://wa.me/2348000000000" target="_blank">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Chat Us on WhatsApp
+    </a>
+    <div class="contact-info">
+      <div class="contact-info-item">
+        <span class="label">Brand</span>
+        <span class="val">Lichi Hair Empire</span>
+      </div>
+      <div class="contact-info-item">
+        <span class="label">Location</span>
+        <span class="val">Lagos, Nigeria</span>
+      </div>
+      <div class="contact-info-item">
+        <span class="label">Orders</span>
+        <span class="val">WhatsApp Only</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner" style="background: rgba(0,0,0,0.2); padding: 20px 24px;">
+      <span class="footer-logo">✦ Lichi Hair Empire</span>
+      <span class="footer-copy">© 2025 Lichi Hair Empire. All rights reserved.</span>
+      <button class="footer-admin-link" onclick="showAdminLogin()">Admin ↗</button>
+    </div>
+  </footer>
+
+</div>
+<!-- END MAIN PAGE -->
+
+<!-- ===== ADMIN LOGIN ===== -->
+<div id="admin-login-page" class="page">
+  <div class="admin-login-wrap">
+    <div class="login-card">
+      <div class="login-logo">✦ Lichi Hair Empire</div>
+      <div class="login-sub">Admin Portal</div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-input" id="loginPass" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')doLogin()">
+      </div>
+      <button class="login-btn" onclick="doLogin()">Enter Dashboard</button>
+      <div class="login-err" id="loginErr">Incorrect password. Please try again.</div>
+      <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border);">
+        <button onclick="showPage('main-page')" style="background:none;border:none;color:var(--text-light);font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;">← Back to Website</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ADMIN PANEL ===== -->
+<div id="admin-panel-page" class="page">
+  <div class="admin-wrap">
+    <nav class="admin-nav">
+      <div class="admin-nav-left">
+        <span class="admin-logo">✦ Lichi Hair Empire</span>
+        <span class="admin-badge">Admin</span>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;">
+        <button class="admin-logout" onclick="showPage('main-page')">View Site</button>
+        <button class="admin-logout" onclick="adminLogout()">Log Out</button>
+      </div>
+    </nav>
+
+    <div class="admin-content">
+      <div class="admin-header">
+        <h1>Hair Collection Manager</h1>
+        <p>Upload, price, and manage your hair products — changes appear live on the website.</p>
+      </div>
+
+      <div class="admin-grid">
+        <!-- ADD HAIR PANEL -->
+        <div class="admin-panel">
+          <div class="panel-header">
+            <span class="panel-title">Add New Hair</span>
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+              <label class="form-label">Hair Photo</label>
+              <div class="upload-area" id="uploadArea">
+                <input type="file" id="hairImageInput" accept="image/*" onchange="previewImage(event)">
+                <div id="uploadPrompt">
+                  <div class="upload-icon">📸</div>
+                  <div class="upload-text">Tap to upload hair photo<br><small style="color:var(--text-light)">JPG, PNG up to 5MB</small></div>
+                </div>
+                <img id="uploadPreview" class="upload-preview" alt="Preview">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Hair Name</label>
+              <input type="text" class="form-input" id="hairName" placeholder="e.g. Brazilian Body Wave 28 inch">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Description</label>
+              <textarea class="form-textarea" id="hairDesc" placeholder="e.g. Silky smooth, 100% human hair, lasts 12+ months..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Price Setting</label>
+              <div class="price-options">
+                <label class="price-option">
+                  <input type="radio" name="priceType" value="fixed" checked onchange="updatePriceUI()">
+                  Enter Price
+                </label>
+                <label class="price-option">
+                  <input type="radio" name="priceType" value="negotiable" onchange="updatePriceUI()">
+                  Negotiable
+                </label>
+                <label class="price-option">
+                  <input type="radio" name="priceType" value="hidden" onchange="updatePriceUI()">
+                  Hide Price
+                </label>
+              </div>
+              <div class="price-fields show" id="priceFields">
+                <div class="price-currency-row">
+                  <select class="form-select" id="hairCurrency" style="max-width:120px">
+                    <option value="NGN">₦ NGN</option>
+                    <option value="USD">$ USD</option>
+                  </select>
+                  <input type="number" class="form-input" id="hairPrice" placeholder="Amount" style="flex:1">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group" style="margin-bottom:0">
+                <label class="form-label">Category</label>
+                <select class="form-select" id="hairCategory">
+                  <option value="wig">Wig</option>
+                  <option value="bundle">Bundle</option>
+                  <option value="closure">Closure</option>
+                  <option value="frontal">Frontal</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-bottom:0">
+                <label class="form-label">Badge (Optional)</label>
+                <input type="text" class="form-input" id="hairBadge" placeholder="e.g. Best Seller">
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-top:16px">
+              <label class="form-label">WhatsApp Number</label>
+              <input type="text" class="form-input" id="hairWA" placeholder="e.g. 2348012345678" value="2348000000000">
+              <small style="color:var(--text-light);font-size:11px;display:block;margin-top:4px">Include country code, no + or spaces</small>
+            </div>
+
+            <button class="save-btn" onclick="saveHair()">✦ Add to Collection</button>
+          </div>
+        </div>
+
+        <!-- HAIR LIST PANEL -->
+        <div class="admin-panel">
+          <div class="panel-header">
+            <span class="panel-title">Your Collection</span>
+            <span id="hairCount" style="font-size:13px;color:var(--text-light)">0 items</span>
+          </div>
+          <div class="panel-body" style="padding:0">
+            <div class="admin-hair-list" id="adminHairList">
+              <div class="empty-admin">No hair added yet — add your first style! ✨</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT MODAL -->
+<div class="edit-modal-overlay" id="editModal">
+  <div class="edit-modal">
+    <h2><button class="modal-close" onclick="closeEditModal()">✕</button>Edit Hair</h2>
+    <div class="form-group">
+      <label class="form-label">Hair Name</label>
+      <input type="text" class="form-input" id="editHairName">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Description</label>
+      <textarea class="form-textarea" id="editHairDesc"></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Price Setting</label>
+      <div class="price-options">
+        <label class="price-option"><input type="radio" name="editPriceType" value="fixed" onchange="updateEditPriceUI()"> Enter Price</label>
+        <label class="price-option"><input type="radio" name="editPriceType" value="negotiable" onchange="updateEditPriceUI()"> Negotiable</label>
+        <label class="price-option"><input type="radio" name="editPriceType" value="hidden" onchange="updateEditPriceUI()"> Hide Price</label>
+      </div>
+      <div class="price-fields" id="editPriceFields">
+        <div class="price-currency-row">
+          <select class="form-select" id="editHairCurrency" style="max-width:120px">
+            <option value="NGN">₦ NGN</option>
+            <option value="USD">$ USD</option>
+          </select>
+          <input type="number" class="form-input" id="editHairPrice" placeholder="Amount" style="flex:1">
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Badge (Optional)</label>
+      <input type="text" class="form-input" id="editHairBadge" placeholder="e.g. Best Seller">
+    </div>
+    <div class="form-group">
+      <label class="form-label">WhatsApp Number</label>
+      <input type="text" class="form-input" id="editHairWA" placeholder="e.g. 2348012345678">
+    </div>
+    <input type="hidden" id="editHairId">
+    <button class="save-btn" onclick="saveEdit()">Save Changes</button>
+  </div>
+</div>
+
+<script>
+const ADMIN_PASS = 'lichiwebsitepassword9-';
+const HAIR_KEY = 'lichi_hair_collection';
+
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+  if (id === 'main-page') renderMainGrid();
+  if (id === 'admin-panel-page') renderAdminList();
+}
+
+function showAdminLogin() { showPage('admin-login-page'); }
+function adminLogout() {
+  document.getElementById('loginPass').value = '';
+  showPage('admin-login-page');
+}
+
+function doLogin() {
+  const pass = document.getElementById('loginPass').value;
+  const err = document.getElementById('loginErr');
+  if (pass === ADMIN_PASS) {
+    err.style.display = 'none';
+    showPage('admin-panel-page');
+  } else {
+    err.style.display = 'block';
+  }
+}
+
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+}
+function closeMenu() {
+  document.getElementById('mobileMenu').style.display = 'none';
+}
+
+function getHairs() {
+  try { return JSON.parse(localStorage.getItem(HAIR_KEY)) || []; } catch { return []; }
+}
+function saveHairs(hairs) {
+  localStorage.setItem(HAIR_KEY, JSON.stringify(hairs));
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+let currentImageData = null;
+function previewImage(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    currentImageData = ev.target.result;
+    const prev = document.getElementById('uploadPreview');
+    prev.src = currentImageData;
+    prev.style.display = 'block';
+    document.getElementById('uploadPrompt').style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+}
+
+function updatePriceUI() {
+  const val = document.querySelector('input[name="priceType"]:checked').value;
+  const fields = document.getElementById('priceFields');
+  fields.classList.toggle('show', val === 'fixed');
+}
+
+function updateEditPriceUI() {
+  const val = document.querySelector('input[name="editPriceType"]:checked').value;
+  const fields = document.getElementById('editPriceFields');
+  fields.classList.toggle('show', val === 'fixed');
+}
+
+function saveHair() {
+  const name = document.getElementById('hairName').value.trim();
+  if (!name) { showToast('Please enter a hair name!'); return; }
+  const priceType = document.querySelector('input[name="priceType"]:checked').value;
+  const price = document.getElementById('hairPrice').value;
+  const currency = document.getElementById('hairCurrency').value;
+  const hairs = getHairs();
+  if (hairs.length >= 10) { showToast('Max 10 hair items allowed! Delete one to add more.'); return; }
+  const hair = {
+    id: Date.now().toString(),
+    name, 
+    desc: document.getElementById('hairDesc').value.trim(),
+    priceType,
+    price: priceType === 'fixed' ? price : '',
+    currency,
+    category: document.getElementById('hairCategory').value,
+    badge: document.getElementById('hairBadge').value.trim(),
+    waNumber: document.getElementById('hairWA').value.trim() || '2348000000000',
+    image: currentImageData,
+    visible: true,
+    createdAt: Date.now()
+  };
+  hairs.push(hair);
+  saveHairs(hairs);
+  resetAddForm();
+  renderAdminList();
+  showToast('✦ Hair added to your collection!');
+}
+
+function resetAddForm() {
+  document.getElementById('hairName').value = '';
+  document.getElementById('hairDesc').value = '';
+  document.getElementById('hairPrice').value = '';
+  document.getElementById('hairBadge').value = '';
+  document.getElementById('hairCurrency').value = 'NGN';
+  document.getElementById('hairCategory').value = 'wig';
+  document.querySelector('input[name="priceType"][value="fixed"]').checked = true;
+  updatePriceUI();
+  currentImageData = null;
+  document.getElementById('uploadPreview').style.display = 'none';
+  document.getElementById('uploadPrompt').style.display = 'block';
+  document.getElementById('hairImageInput').value = '';
+}
+
+function deleteHair(id) {
+  if (!confirm('Delete this hair from your collection?')) return;
+  let hairs = getHairs().filter(h => h.id !== id);
+  saveHairs(hairs);
+  renderAdminList();
+  showToast('Hair removed.');
+}
+
+function toggleVisibility(id) {
+  let hairs = getHairs();
+  const h = hairs.find(h => h.id === id);
+  if (h) h.visible = !h.visible;
+  saveHairs(hairs);
+  renderAdminList();
+}
+
+function openEditModal(id) {
+  const hair = getHairs().find(h => h.id === id);
+  if (!hair) return;
+  document.getElementById('editHairId').value = id;
+  document.getElementById('editHairName').value = hair.name;
+  document.getElementById('editHairDesc').value = hair.desc || '';
+  document.getElementById('editHairBadge').value = hair.badge || '';
+  document.getElementById('editHairWA').value = hair.waNumber || '2348000000000';
+  document.getElementById('editHairCurrency').value = hair.currency || 'NGN';
+  document.getElementById('editHairPrice').value = hair.price || '';
+  const pt = hair.priceType || 'fixed';
+  document.querySelector(`input[name="editPriceType"][value="${pt}"]`).checked = true;
+  updateEditPriceUI();
+  document.getElementById('editModal').classList.add('open');
+}
+function closeEditModal() { document.getElementById('editModal').classList.remove('open'); }
+
+function saveEdit() {
+  const id = document.getElementById('editHairId').value;
+  let hairs = getHairs();
+  const idx = hairs.findIndex(h => h.id === id);
+  if (idx === -1) return;
+  const priceType = document.querySelector('input[name="editPriceType"]:checked').value;
+  hairs[idx] = {
+    ...hairs[idx],
+    name: document.getElementById('editHairName').value.trim(),
+    desc: document.getElementById('editHairDesc').value.trim(),
+    badge: document.getElementById('editHairBadge').value.trim(),
+    waNumber: document.getElementById('editHairWA').value.trim(),
+    priceType,
+    price: priceType === 'fixed' ? document.getElementById('editHairPrice').value : '',
+    currency: document.getElementById('editHairCurrency').value
+  };
+  saveHairs(hairs);
+  closeEditModal();
+  renderAdminList();
+  showToast('Changes saved!');
+}
+
+function renderAdminList() {
+  const hairs = getHairs();
+  const list = document.getElementById('adminHairList');
+  const count = document.getElementById('hairCount');
+  count.textContent = hairs.length + '/10 items';
+  if (!hairs.length) {
+    list.innerHTML = '<div class="empty-admin">No hair added yet — add your first style! ✨</div>';
+    return;
+  }
+  list.innerHTML = hairs.map(h => {
+    const sym = h.currency === 'USD' ? '$' : '₦';
+    const priceLabel = h.priceType === 'negotiable' ? 'Negotiable' :
+                       h.priceType === 'hidden' ? 'Price Hidden' :
+                       (sym + Number(h.price).toLocaleString());
+    const thumb = h.image
+      ? `<img src="${h.image}" class="admin-hair-thumb" alt="${h.name}">`
+      : `<div class="admin-hair-thumb-placeholder">💇‍♀️</div>`;
+    return `
+      <div class="admin-hair-item">
+        ${thumb}
+        <div class="admin-hair-info">
+          <div class="admin-hair-name">${h.name}</div>
+          <div class="admin-hair-price">${priceLabel}</div>
+        </div>
+        <span class="admin-hair-status">${h.visible ? 'Live' : 'Hidden'}</span>
+        <div class="admin-actions">
+          <button class="toggle-btn ${h.visible ? 'on' : ''}" onclick="toggleVisibility('${h.id}')" title="${h.visible ? 'Hide' : 'Show'}"></button>
+          <button class="action-btn" onclick="openEditModal('${h.id}')" title="Edit">✏️</button>
+          <button class="action-btn delete" onclick="deleteHair('${h.id}')" title="Delete">🗑️</button>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function renderMainGrid() {
+  const hairs = getHairs().filter(h => h.visible);
+  const grid = document.getElementById('hairGrid');
+  if (!hairs.length) {
+    grid.innerHTML = `<div class="empty-grid"><div class="empty-icon">👑</div><p>Our curated collection is coming soon...<br>Check back or chat with us on WhatsApp!</p></div>`;
+    return;
+  }
+  grid.innerHTML = hairs.map(h => {
+    const sym = h.currency === 'USD' ? '$' : '₦';
+    let priceHTML = '';
+    if (h.priceType === 'fixed' && h.price) {
+      priceHTML = `<span class="hair-price">${sym}${Number(h.price).toLocaleString()}</span>`;
+    } else if (h.priceType === 'negotiable') {
+      priceHTML = `<span class="hair-price negotiable">Price: Contact Us</span>`;
+    } else {
+      priceHTML = `<span></span>`;
+    }
+    const imgHTML = h.image
+      ? `<img src="${h.image}" class="hair-card-img" alt="${h.name}" loading="lazy">`
+      : `<div class="hair-card-img-placeholder">
+           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+           <span>Lichi Hair</span>
+         </div>`;
+    const badge = h.badge ? `<span class="hair-badge">${h.badge}</span>` : '';
+    const waLink = `https://wa.me/${h.waNumber || '2348000000000'}?text=Hi%20Lichi%20Hair%20Empire!%20I%27m%20interested%20in%20${encodeURIComponent(h.name)}.%20Can%20you%20help%20me%20order%3F`;
+    return `
+      <div class="hair-card">
+        ${badge}
+        ${imgHTML}
+        <div class="hair-card-body">
+          <div class="hair-name">${h.name}</div>
+          ${h.desc ? `<div class="hair-desc">${h.desc}</div>` : ''}
+          <div class="hair-price-row">
+            ${priceHTML}
+            <a class="wa-btn" href="${waLink}" target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Order
+            </a>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+// Scroll animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.scroll-appear').forEach(el => observer.observe(el));
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); closeMenu(); }
+  });
+});
+
+// Init
+renderMainGrid();
+</script>
+</body>
+</html>
