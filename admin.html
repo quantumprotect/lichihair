@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Lichi · Admin</title>
+<meta name="theme-color" content="#2a0c20" />
+<link rel="manifest" href="/manifest-admin.json" />
+<link rel="icon" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="Lichi Admin" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{--wine:#2a0c20;--wine2:#4a1530;--rose:#c9485b;--blush:#f4d9de;
+    --gold:#d6b26e;--gold-soft:#e8c97b;--cream:#fbf4ee;--ink:#33141f;
+    --line:rgba(42,12,32,.12);--ok:#1f9d57;--err:#c0392b}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Jost',sans-serif;color:var(--ink);
+    background:radial-gradient(60% 50% at 80% 0%,rgba(201,72,91,.12),transparent),var(--cream);min-height:100vh}
+  .display{font-family:'Cormorant Garamond',serif}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 18px}
+  a{color:var(--rose)}
+  header.bar{background:var(--wine);color:var(--cream);position:sticky;top:0;z-index:30}
+  .bar-in{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold-soft)}
+  .brand .m{width:30px;height:30px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;font-size:.95rem}
+  .bar a,.bar button{color:var(--gold-soft);background:transparent;border:1px solid rgba(232,201,123,.4);
+    border-radius:24px;padding:7px 14px;font-size:.82rem;cursor:pointer;text-decoration:none;font-family:inherit}
+  .login-screen{min-height:80vh;display:grid;place-items:center;padding:30px}
+  .login-card{background:#fff;border-radius:24px;padding:40px 34px;max-width:380px;width:100%;
+    box-shadow:0 30px 70px -34px rgba(42,12,32,.5);text-align:center}
+  .login-card .m{width:64px;height:64px;border-radius:50%;margin:0 auto 16px;
+    background:radial-gradient(circle at 40% 35%,var(--rose),var(--wine));color:var(--gold-soft);
+    display:grid;place-items:center;font-family:'Cormorant Garamond',serif;font-size:1.7rem;border:1px solid var(--gold)}
+  .login-card h1{font-family:'Cormorant Garamond',serif;color:var(--wine);font-size:1.9rem;margin-bottom:4px}
+  .login-card p{color:#7a4452;font-size:.9rem;margin-bottom:22px;font-weight:300}
+  label{display:block;text-align:left;font-size:.8rem;letter-spacing:.4px;color:#6b4350;margin:14px 0 6px;font-weight:500}
+  input,textarea,select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;
+    font-family:inherit;font-size:.95rem;background:#fff;color:var(--ink)}
+  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--rose);box-shadow:0 0 0 3px rgba(201,72,91,.12)}
+  textarea{resize:vertical;min-height:64px}
+  .btn{border:none;border-radius:30px;padding:13px 22px;font-family:inherit;font-weight:600;cursor:pointer;font-size:.92rem;transition:transform .2s,filter .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:linear-gradient(120deg,var(--rose),var(--wine));color:var(--gold-soft);width:100%;margin-top:8px}
+  .btn-sm{padding:9px 16px;font-size:.82rem}
+  .btn-outline{background:#fff;border:1px solid var(--line);color:var(--wine)}
+  .btn-danger{background:#fff;border:1px solid var(--err);color:var(--err)}
+  main{padding:30px 0 80px;display:none}
+  .panel{background:#fff;border-radius:22px;padding:26px;margin-bottom:24px;
+    box-shadow:0 20px 50px -34px rgba(42,12,32,.4);border:1px solid rgba(42,12,32,.05)}
+  .panel h2{font-family:'Cormorant Garamond',serif;color:var(--wine);font-size:1.7rem;margin-bottom:4px}
+  .panel .sub{color:#7a4452;font-size:.88rem;font-weight:300;margin-bottom:18px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+  .count-pill{display:inline-block;background:var(--blush);color:var(--wine);font-size:.78rem;padding:5px 12px;border-radius:20px;margin-left:8px}
+  .plist{display:grid;gap:14px;margin-top:18px}
+  .pitem{display:flex;gap:14px;align-items:center;border:1px solid var(--line);border-radius:16px;padding:12px}
+  .pitem .thumb{width:64px;height:80px;border-radius:10px;object-fit:cover;background:var(--blush);flex-shrink:0;
+    display:grid;place-items:center;font-family:'Cormorant Garamond',serif;color:var(--rose);font-size:1.4rem}
+  .pitem .meta{flex:1;min-width:0}
+  .pitem .meta b{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--wine)}
+  .pitem .meta .tags{font-size:.78rem;color:#7a4452;margin-top:3px}
+  .tag{display:inline-block;background:#f3e6ea;border-radius:14px;padding:2px 9px;margin-right:5px}
+  .tag.hidden{background:#eee;color:#999}
+  .pitem .acts{display:flex;gap:8px;flex-shrink:0}
+  .msg{padding:11px 14px;border-radius:12px;font-size:.88rem;margin-bottom:14px;display:none}
+  .msg.ok{background:#e6f6ec;color:var(--ok);display:block}
+  .msg.err{background:#fbe8e6;color:var(--err);display:block}
+  .modal{position:fixed;inset:0;background:rgba(42,12,32,.55);display:none;place-items:center;z-index:60;padding:18px;backdrop-filter:blur(3px)}
+  .modal.show{display:grid}
+  .modal-card{background:#fff;border-radius:22px;padding:26px;max-width:520px;width:100%;max-height:92vh;overflow:auto}
+  .modal-card h3{font-family:'Cormorant Garamond',serif;color:var(--wine);font-size:1.6rem;margin-bottom:14px}
+  .modal-foot{display:flex;gap:10px;margin-top:18px}
+  .modal-foot .btn{flex:1}
+  .hint{font-size:.78rem;color:#9a7280;margin-top:5px;font-weight:300}
+  @media(max-width:680px){.row,.row3{grid-template-columns:1fr}.pitem{flex-wrap:wrap}.pitem .acts{width:100%}}
+</style>
+</head>
+<body>
+
+<div class="login-screen" id="loginScreen">
+  <div class="login-card">
+    <div class="m">L</div>
+    <h1>Lichi Admin</h1>
+    <p>Sign in to manage your hair collection.</p>
+    <div class="msg err" id="loginErr"></div>
+    <input type="password" id="pw" placeholder="Admin password" autocomplete="current-password" />
+    <button class="btn btn-primary" id="loginBtn">Enter Dashboard</button>
+  </div>
+</div>
+
+<header class="bar" id="bar" style="display:none"><div class="wrap bar-in">
+  <div class="brand"><span class="m">L</span><span id="barName">Lichi</span> Admin</div>
+  <div style="display:flex;gap:8px">
+    <a href="/" target="_blank">View site ↗</a>
+    <button id="logoutBtn">Log out</button>
+  </div>
+</div></header>
+
+<main id="dash"><div class="wrap">
+  <section class="panel">
+    <h2>Brand &amp; Contact</h2>
+    <p class="sub">Your brand name updates everywhere on the site instantly.</p>
+    <div class="msg" id="setMsg"></div>
+    <label>Brand name</label>
+    <input id="s_brand" placeholder="Lichi" />
+    <div class="row">
+      <div><label>Tagline</label><input id="s_tag" placeholder="Luxury hair…" /></div>
+      <div><label>WhatsApp number (country code, digits only)</label>
+        <input id="s_wa" placeholder="2348012345678" />
+        <p class="hint">e.g. Nigeria 234… — no +, spaces or leading 0.</p></div>
+    </div>
+    <div class="row">
+      <div><label>Hero subtitle</label><input id="s_note" placeholder="Premium bundles, frontals & wigs…" /></div>
+      <div><label>Instagram link (optional)</label><input id="s_ig" placeholder="https://instagram.com/…" /></div>
+    </div>
+    <button class="btn btn-primary" id="saveSettings" style="width:auto;margin-top:18px">Save brand settings</button>
+  </section>
+
+  <section class="panel">
+    <h2>Add Hair</h2>
+    <p class="sub">Add as many best sellers as you like — all the ones you mark live show on the homepage.</p>
+    <div class="msg" id="addMsg"></div>
+    <form id="addForm">
+      <div class="row">
+        <div><label>Hair name *</label><input name="name" required placeholder="Brazilian Body Wave" /></div>
+        <div><label>Photo</label><input type="file" name="image" accept="image/*" /></div>
+      </div>
+      <label>Description</label>
+      <textarea name="description" placeholder="Length, texture, quality…"></textarea>
+      <div class="row3">
+        <div><label>Pricing</label>
+          <select name="price_mode" class="mode">
+            <option value="fixed">Fixed price</option>
+            <option value="negotiable">Negotiable</option>
+            <option value="off">Price off (ask)</option>
+          </select></div>
+        <div class="pf"><label>Currency</label>
+          <select name="currency"><option value="NGN">₦ NGN</option><option value="USD">$ USD</option></select></div>
+        <div class="pf"><label>Amount</label><input type="number" name="price" step="0.01" placeholder="120000" /></div>
+      </div>
+      <label style="display:flex;align-items:center;gap:8px;margin-top:14px">
+        <input type="checkbox" name="visible" checked style="width:auto"> Show on homepage (best seller)
+      </label>
+      <button class="btn btn-primary" type="submit" style="width:auto;margin-top:16px">Add to collection</button>
+    </form>
+  </section>
+
+  <section class="panel">
+    <h2>Your Collection <span class="count-pill" id="countPill">0 live</span></h2>
+    <p class="sub">Edit, hide or remove any item.</p>
+    <div class="plist" id="plist"></div>
+  </section>
+</div></main>
+
+<div class="modal" id="editModal"><div class="modal-card">
+  <h3>Edit Hair</h3>
+  <div class="msg" id="editMsg"></div>
+  <form id="editForm">
+    <input type="hidden" name="id" />
+    <label>Hair name</label><input name="name" required />
+    <label>Description</label><textarea name="description"></textarea>
+    <label>Replace photo (optional)</label><input type="file" name="image" accept="image/*" />
+    <div class="row3">
+      <div><label>Pricing</label>
+        <select name="price_mode" class="mode">
+          <option value="fixed">Fixed price</option>
+          <option value="negotiable">Negotiable</option>
+          <option value="off">Price off (ask)</option>
+        </select></div>
+      <div class="pf"><label>Currency</label>
+        <select name="currency"><option value="NGN">₦ NGN</option><option value="USD">$ USD</option></select></div>
+      <div class="pf"><label>Amount</label><input type="number" name="price" step="0.01" /></div>
+    </div>
+    <label style="display:flex;align-items:center;gap:8px;margin-top:12px">
+      <input type="checkbox" name="visible" style="width:auto"> Show on homepage
+    </label>
+    <div class="modal-foot">
+      <button type="button" class="btn btn-outline" id="closeModal">Cancel</button>
+      <button type="submit" class="btn btn-primary">Save changes</button>
+    </div>
+  </form>
+</div></div>
+
+<div id="install" style="position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:80;display:none;align-items:center;gap:14px;background:var(--wine);color:var(--cream);padding:12px 16px;border-radius:40px;box-shadow:0 24px 60px -28px rgba(42,12,32,.55);font-size:.86rem">
+  <span>Install the Admin app ✨</span>
+  <button id="installBtn" style="background:var(--gold-soft);color:var(--wine);border:none;border-radius:30px;padding:8px 16px;font-weight:600;cursor:pointer">Install</button>
+  <span class="x" id="installX" style="cursor:pointer;opacity:.7">✕</span>
+</div>
+
+<script src="/config.js"></script>
+<script>
+const API = (window.API_BASE || "").replace(/\/$/,"");
+const $ = s => document.querySelector(s);
+const sym = c => c==="USD" ? "$" : "₦";
+const esc = s => String(s||"").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const show = (el,type,txt) => {el.className="msg "+type;el.textContent=txt;el.style.display="block";
+  if(type==="ok") setTimeout(()=>el.style.display="none",2600);};
+
+let TOKEN = localStorage.getItem("lichi_token") || "";
+let HAIRS = {};   // id -> hair object (avoids quoting bugs in inline handlers)
+
+// fetch wrapper: adds bearer token, auto-logs-out on 401
+async function api(path, opts={}){
+  opts.headers = Object.assign({}, opts.headers, TOKEN ? {Authorization:"Bearer "+TOKEN} : {});
+  const r = await fetch(API+path, opts);
+  if(r.status===401){ logoutLocal(); }
+  return r;
+}
+
+function bindMode(form){
+  const sel=form.querySelector(".mode");
+  const fields=form.querySelectorAll(".pf");
+  const apply=()=>fields.forEach(f=>f.style.visibility = sel.value==="fixed" ? "visible" : "hidden");
+  sel.addEventListener("change",apply); apply();
+}
+
+async function login(){
+  try{
+    const r=await fetch(API+"/api/login",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({password:$("#pw").value})});
+    if(!r.ok){show($("#loginErr"),"err","Wrong password — try again.");return;}
+    TOKEN=(await r.json()).token; localStorage.setItem("lichi_token",TOKEN); enterDash();
+  }catch(e){ show($("#loginErr"),"err","Can't reach the server. Check your connection / API URL."); }
+}
+function enterDash(){
+  $("#loginScreen").style.display="none"; $("#bar").style.display="block"; $("#dash").style.display="block";
+  loadSettings(); loadHairs();
+}
+function logoutLocal(){
+  TOKEN=""; localStorage.removeItem("lichi_token");
+  $("#loginScreen").style.display="grid"; $("#bar").style.display="none"; $("#dash").style.display="none";
+}
+$("#loginBtn").onclick=login;
+$("#pw").addEventListener("keydown",e=>{if(e.key==="Enter")login();});
+$("#logoutBtn").onclick=async()=>{ try{await api("/api/logout",{method:"POST"});}catch(e){} logoutLocal(); };
+
+async function loadSettings(){
+  const s=await (await fetch(API+"/api/settings")).json();
+  $("#s_brand").value=s.brand_name||""; $("#s_tag").value=s.tagline||"";
+  $("#s_wa").value=s.whatsapp_number||""; $("#s_note").value=s.hero_note||"";
+  $("#s_ig").value=s.instagram||""; $("#barName").textContent=s.brand_name||"Lichi";
+}
+$("#saveSettings").onclick=async()=>{
+  const body={brand_name:$("#s_brand").value.trim(),tagline:$("#s_tag").value.trim(),
+    whatsapp_number:$("#s_wa").value.replace(/[^0-9]/g,""),hero_note:$("#s_note").value.trim(),
+    instagram:$("#s_ig").value.trim()};
+  const r=await api("/api/settings",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+  if(r.ok){show($("#setMsg"),"ok","Saved! Your site is updated.");$("#barName").textContent=body.brand_name||"Lichi";}
+  else show($("#setMsg"),"err","Could not save.");
+};
+
+async function loadHairs(){
+  const hairs=await (await api("/api/admin/hairs")).json();
+  HAIRS={}; hairs.forEach(h=>HAIRS[h.id]=h);
+  const live=hairs.filter(h=>h.visible).length;
+  $("#countPill").textContent=`${live} live · ${hairs.length} total`;
+  const list=$("#plist");
+  if(!hairs.length){list.innerHTML='<p style="color:#9a7280;font-style:italic">No hair added yet — add your first above.</p>';return;}
+  list.innerHTML=hairs.map(h=>{
+    const thumb=h.image
+      ? `<img class="thumb" src="${API}/uploads/${encodeURIComponent(h.image)}">`
+      : `<div class="thumb">${esc((h.name[0]||"L").toUpperCase())}</div>`;
+    const price = h.price_mode==="fixed"&&h.price!=null ? `${sym(h.currency)}${Number(h.price).toLocaleString()}`
+      : h.price_mode==="negotiable" ? "Negotiable" : "Ask for price";
+    return `<div class="pitem">
+      ${thumb}
+      <div class="meta"><b>${esc(h.name)}</b>
+        <div class="tags"><span class="tag">${esc(price)}</span>
+          <span class="tag ${h.visible?'':'hidden'}">${h.visible?'Live':'Hidden'}</span></div></div>
+      <div class="acts">
+        <button class="btn btn-outline btn-sm" data-edit="${h.id}">Edit</button>
+        <button class="btn btn-danger btn-sm" data-del="${h.id}">Delete</button>
+      </div></div>`;
+  }).join("");
+}
+
+// event delegation -> no inline handlers, no quoting bugs
+$("#plist").addEventListener("click",e=>{
+  const ed=e.target.closest("[data-edit]"); const dl=e.target.closest("[data-del]");
+  if(ed) openEdit(HAIRS[ed.dataset.edit]);
+  if(dl) delHair(HAIRS[dl.dataset.del]);
+});
+
+bindMode($("#addForm"));
+$("#addForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const fd=new FormData(e.target); fd.set("visible", e.target.visible.checked?"1":"0");
+  const r=await api("/api/hairs",{method:"POST",body:fd});
+  const d=await r.json().catch(()=>({}));
+  if(r.ok){show($("#addMsg"),"ok","Added to your collection!");e.target.reset();bindMode($("#addForm"));loadHairs();}
+  else show($("#addMsg"),"err",d.error||"Could not add.");
+});
+
+const modal=$("#editModal");
+bindMode($("#editForm"));
+function openEdit(h){
+  if(!h) return;
+  const f=$("#editForm");
+  f.id.value=h.id; f.name.value=h.name; f.description.value=h.description||"";
+  f.price_mode.value=h.price_mode; f.currency.value=h.currency||"NGN";
+  f.price.value=h.price!=null?h.price:""; f.visible.checked=!!h.visible;
+  f.querySelector(".mode").dispatchEvent(new Event("change"));
+  $("#editMsg").style.display="none";
+  modal.classList.add("show");
+}
+$("#closeModal").onclick=()=>modal.classList.remove("show");
+modal.addEventListener("click",e=>{if(e.target===modal)modal.classList.remove("show");});
+$("#editForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const f=e.target; const fd=new FormData(f); fd.set("visible",f.visible.checked?"1":"0");
+  const r=await api("/api/hairs/"+f.id.value,{method:"POST",body:fd});
+  const d=await r.json().catch(()=>({}));
+  if(r.ok){modal.classList.remove("show");loadHairs();}
+  else show($("#editMsg"),"err",d.error||"Could not save.");
+});
+
+async function delHair(h){
+  if(!h || !confirm(`Delete "${h.name}"? This cannot be undone.`)) return;
+  const r=await api("/api/hairs/"+h.id,{method:"DELETE"});
+  if(r.ok) loadHairs();
+}
+
+if("serviceWorker" in navigator){navigator.serviceWorker.register("/service-worker.js").catch(()=>{});}
+
+// install-to-home-screen prompt (Android/desktop Chrome; iOS uses Share > Add to Home Screen)
+let deferred;
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferred=e;$("#install").style.display="flex";});
+$("#installBtn").onclick=async()=>{if(deferred){deferred.prompt();await deferred.userChoice;$("#install").style.display="none";deferred=null;}};
+$("#installX").onclick=()=>$("#install").style.display="none";
+
+// auto-resume session if token still valid
+(async()=>{
+  if(!TOKEN) return;
+  try{ const s=await (await api("/api/session")).json(); if(s.admin) enterDash(); }catch(e){}
+})();
+</script>
+</body>
+</html>

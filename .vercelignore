@@ -1,0 +1,6 @@
+app.py
+requirements.txt
+uploads/
+lichi.db
+__pycache__/
+*.pyc
