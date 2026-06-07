@@ -3,4 +3,4 @@
    Your PythonAnywhere address, with NO trailing slash.
    Example: "https://oluchi.pythonanywhere.com"
    ========================================================= */
-window.API_BASE = "https://YOURUSERNAME.pythonanywhere.com";
+window.API_BASE = "https://lichihaor.pythonanywhere.com/";
